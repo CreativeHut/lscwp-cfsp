@@ -6,7 +6,7 @@
  * Tags: litespeed cache, cloudflare, purge, litespeed, cdn
  * Author: Creative Hut
  * Author URI: https://www.creativehut.com.br/
- * Version: 1.0
+ * Version: 1.1
  * Requires at least: 5.5
  * Tested up to: 6.8
  * Requires PHP: 7.4
@@ -72,6 +72,7 @@ if(!class_exists('LSCWP_CFSP')){
             // Define LSCWP hooks
             add_action('litespeed_purged_post', [$this, 'LSCWP_CFSP_purge_post'], 10); // Hook for purge after save post
             add_action('litespeed_purged_front', [$this, 'LSCWP_CFSP_purge_single_url'], 10, 1); // Hook for purge on admin bar click "Clear this page - LS Cache"
+            add_action('litespeed_purge_url', [$this, 'LSCWP_CFSP_purge_single_url'], 10, 1); // Hook for purge by LSCWP URL hook
         }
         /**
          * LSCWP_CF_SP Logging function

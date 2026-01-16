@@ -4,7 +4,7 @@ Tags: litespeed cache, cloudflare, purge, litespeed, cdn
 Requires at least: 5.5
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,6 +80,7 @@ Yes. The plugin auto-detects:
 - **Hooks used**
   - `litespeed_purged_front`: added in **LSCWP v5.6** (Aug 15, 2023). 
   - `litespeed_purged_post`: available in the **5.x+ series**; confirmed in current builds. Use **LSCWP ≥ 5.6** to ensure full hook compatibility. 
+  - `litespeed_purge_url`:  available on LSCWP API for programatically purge specific URL.
 - **Cloudflare options in LSCWP**
   - LSCWP stores Cloudflare credentials as `litespeed.conf.cdn-cloudflare_*` options (e.g. `_key`, `_email`, `_zone`), a format introduced in 5.x and still present in **7.6.2**. 
 - **Recommended minimum:** LSCWP **≥ 5.6**  
@@ -91,6 +92,9 @@ Yes. The plugin auto-detects:
    You can verify its actions in the **LSCWP debug log** or by checking Cloudflare’s cache purge logs.
 
 == Changelog ==
+
+= 1.1 = 
+* Added litespeed_purge_url hook to improve plugin compatibility with purges made programatically.
 
 = 1.0 =
 * Initial public release.
