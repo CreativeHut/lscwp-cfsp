@@ -106,11 +106,11 @@ Yes. The plugin auto-detects:
 * Batching of 30 URLs per Cloudflare API call.
 * Fully dependent on LSCWP’s Cloudflare configuration options.
 
-## Upgrade Notice ==
+## Upgrade Notice
 
 = 1.0 =
 First stable release. Requires LSCWP ≥ 5.6 to support the `litespeed_purged_front` hook and ensure compatibility with Cloudflare option keys (`litespeed.conf.cdn-cloudflare_*`).
 
-## Privacy ==
+## Privacy
 This plugin makes requests to the Cloudflare API to **invalidate cached URLs**.  
 It does **not** collect or transmit any personal data.
