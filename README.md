@@ -1,4 +1,5 @@
-=== LiteSpeed Cache CloudFlare Single Purge ===
+# LiteSpeed Cache CloudFlare Single Purge
+
 Contributors: creativehut, caiobleggi
 Tags: litespeed cache, cloudflare, purge, litespeed, cdn
 Requires at least: 5.5
@@ -10,7 +11,7 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Adds Cloudflare purge functionality to LiteSpeed Cache (LSCWP) when a post or page is updated or when using the "Clear this page - LS Cache".
 
-== Description ==
+## Description
 
 **What this plugin does**
 
@@ -33,7 +34,7 @@ Adds Cloudflare purge functionality to LiteSpeed Cache (LSCWP) when a post or pa
 - The **LiteSpeed Cache for WordPress (LSCWP)** plugin must be active and with **Cache feature enabled**.
 - Cloudflare credentials configured inside LSCWP (*LiteSpeed Cache → CDN → Cloudflare*).
 
-== How it works ==
+## How it works
 
 1. LSCWP triggers a purge event on a post or URL.  
 2. **LSCWP Cloudflare Single Purge** listens for:
@@ -48,34 +49,34 @@ Adds Cloudflare purge functionality to LiteSpeed Cache (LSCWP) when a post or pa
    - **Bearer Token** (for API Token),
    - **X-Auth-Email + X-Auth-Key** (for Global API Key).
 
-== Installation ==
+## Installation
 
 1. Install and activate **LiteSpeed Cache**.
 2. In **LiteSpeed Cache → CDN → Cloudflare API**, fill in your **Zone ID** and **API Token** *or* **Global API Key + Email**.
 3. Upload and activate this plugin like any standard WordPress plugin.
 4. Update or publish a post, or use “**Purge this page – LSCache**” to test Cloudflare’s selective purge.
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions
 
-= Do I need to configure anything in this plugin? =
+### Do I need to configure anything in this plugin?
 No, but in the LSCWP panel you do. It automatically reads your Cloudflare settings on *LiteSpeed Cache → CDN → Cloudflare*. So it must be configurated and both switches *Cloudflare API* and *Clear Cloudflare cache* must be enabled.
 
-= Will it work if LSCWP is inactive? =
+### Will it work if LSCWP is inactive?
 No. It depends on LSCWP events and configuration. If LSCWP is disabled or Cloudflare credentials are missing, this plugin won’t run.
 
-= Does it ever trigger a purge-all on Cloudflare? =
+### Does it ever trigger a purge-all on Cloudflare?
 No. It only performs selective purges of specific URLs according your actions.
 
-= What is the purge order? =
+### What is the purge order?
 First, LSCWP clears the cache on the server (tags like `Po.{id}`, `URL.{path}`, etc.).  
 **Then**, this plugin calls Cloudflare’s API to invalidate the same URLs at the edge.
 
-= Does it support both API Token and Global API Key authentication? =
+### Does it support both API Token and Global API Key authentication?
 Yes. The plugin auto-detects:
 - **API Token (Bearer)** – a long alphanumeric string;
 - **Global API Key + Email** – sent via `X-Auth-Email` and `X-Auth-Key` headers.
 
-== Compatibility / Requirements ==
+## Compatibility / Requirements
 
 - **Hooks used**
   - `litespeed_purged_front`: added in **LSCWP v5.6** (Aug 15, 2023). 
@@ -86,12 +87,12 @@ Yes. The plugin auto-detects:
 - **Recommended minimum:** LSCWP **≥ 5.6**  
 - **Tested with:** LSCWP **7.6.2** (current stable release) 
 
-== Screenshots ==
+## Screenshots
 
 1. No interface is required — the plugin is “set-and-forget.”  
    You can verify its actions in the **LSCWP debug log** or by checking Cloudflare’s cache purge logs.
 
-== Changelog ==
+## Changelog
 
 = 1.1 = 
 * Added litespeed_purge_url hook to improve plugin compatibility with purges made programatically.
@@ -105,11 +106,11 @@ Yes. The plugin auto-detects:
 * Batching of 30 URLs per Cloudflare API call.
 * Fully dependent on LSCWP’s Cloudflare configuration options.
 
-== Upgrade Notice ==
+## Upgrade Notice ==
 
 = 1.0 =
 First stable release. Requires LSCWP ≥ 5.6 to support the `litespeed_purged_front` hook and ensure compatibility with Cloudflare option keys (`litespeed.conf.cdn-cloudflare_*`).
 
-== Privacy ==
+## Privacy ==
 This plugin makes requests to the Cloudflare API to **invalidate cached URLs**.  
 It does **not** collect or transmit any personal data.
